@@ -1,0 +1,14 @@
+C:\Users\haroo\source\repos\UniformShop\UniformShop\bin\Debug\netcoreapp2.1\UniformShop.deps.json
+C:\Users\haroo\source\repos\UniformShop\UniformShop\bin\Debug\netcoreapp2.1\UniformShop.runtimeconfig.json
+C:\Users\haroo\source\repos\UniformShop\UniformShop\bin\Debug\netcoreapp2.1\UniformShop.runtimeconfig.dev.json
+C:\Users\haroo\source\repos\UniformShop\UniformShop\bin\Debug\netcoreapp2.1\UniformShop.dll
+C:\Users\haroo\source\repos\UniformShop\UniformShop\bin\Debug\netcoreapp2.1\UniformShop.pdb
+C:\Users\haroo\source\repos\UniformShop\UniformShop\obj\Debug\netcoreapp2.1\UniformShop.csprojAssemblyReference.cache
+C:\Users\haroo\source\repos\UniformShop\UniformShop\obj\Debug\netcoreapp2.1\UniformShop.csproj.CoreCompileInputs.cache
+C:\Users\haroo\source\repos\UniformShop\UniformShop\obj\Debug\netcoreapp2.1\UniformShop.RazorAssemblyInfo.cache
+C:\Users\haroo\source\repos\UniformShop\UniformShop\obj\Debug\netcoreapp2.1\UniformShop.RazorAssemblyInfo.cs
+C:\Users\haroo\source\repos\UniformShop\UniformShop\obj\Debug\netcoreapp2.1\UniformShop.AssemblyInfoInputs.cache
+C:\Users\haroo\source\repos\UniformShop\UniformShop\obj\Debug\netcoreapp2.1\UniformShop.AssemblyInfo.cs
+C:\Users\haroo\source\repos\UniformShop\UniformShop\obj\Debug\netcoreapp2.1\UniformShop.RazorTargetAssemblyInfo.cache
+C:\Users\haroo\source\repos\UniformShop\UniformShop\obj\Debug\netcoreapp2.1\UniformShop.dll
+C:\Users\haroo\source\repos\UniformShop\UniformShop\obj\Debug\netcoreapp2.1\UniformShop.pdb
