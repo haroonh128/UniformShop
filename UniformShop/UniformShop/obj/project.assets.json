@@ -11799,11 +11799,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\haroo\\source\\repos\\UniformShop\\UniformShop\\UniformShop.csproj",
+      "projectUniqueName": "C:\\Users\\haroo\\source\\repos\\haroonh128\\UniformShop\\UniformShop\\UniformShop\\UniformShop.csproj",
       "projectName": "UniformShop",
-      "projectPath": "C:\\Users\\haroo\\source\\repos\\UniformShop\\UniformShop\\UniformShop.csproj",
+      "projectPath": "C:\\Users\\haroo\\source\\repos\\haroonh128\\UniformShop\\UniformShop\\UniformShop\\UniformShop.csproj",
       "packagesPath": "C:\\Users\\haroo\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\haroo\\source\\repos\\UniformShop\\UniformShop\\obj\\",
+      "outputPath": "C:\\Users\\haroo\\source\\repos\\haroonh128\\UniformShop\\UniformShop\\UniformShop\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

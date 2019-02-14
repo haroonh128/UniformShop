@@ -13,12 +13,15 @@ namespace UniformShop.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long itemId { get; set; }
         public string itemName { get; set; }
-        public long imgId { get; set; }
+        [ForeignKey("imgId")]
+        public ICollection<Image>Images { get; set; }
         public long categoryId { get; set; }
-        public long sizeId { get; set; }
-        public long colorId { get; set; }
+        [ForeignKey("sizeId")]
+        public virtual size Size { get; set; }
+        [ForeignKey("colorId")]
+        public virtual color Color { get; set; }
         public string description { get; set; }
-        public long variationId { get; set; }
-        public long discountId { get; set; }
+        [ForeignKey("varId")]
+        public ICollection<variation>variations { get; set; }
     }
 }

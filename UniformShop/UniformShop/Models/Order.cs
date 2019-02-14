@@ -13,10 +13,9 @@ namespace UniformShop.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long orderId { get; set; }
         public long itemId { get; set; }
-        public long customerId { get; set; }
+        [ForeignKey("custId")]
+        public virtual Customer Customer { get; set; }
         public string date { get; set; }
-        public  int qty  { get; set; }
-        public bool status { get; set; }
         public string createdBy { get; set; }
         public string createdDate { get; set; }
         public string modifiedBy { get; set; }
