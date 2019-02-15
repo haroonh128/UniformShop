@@ -12,9 +12,12 @@ namespace UniformShop.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long varId { get; set; }
+        public string varDescription { get; set; }
         [ForeignKey("colorId")]
         public ICollection<color> Color { get; set; }
         [ForeignKey("imgId")]
         public ICollection<Image> Image { get; set; }
+        //[ForeignKey("itemId")]
+        //public virtual Item Item { get; set; }
     }
 }

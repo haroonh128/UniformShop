@@ -219,11 +219,9 @@ namespace UniformShop.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<long?>("itemId");
+                    b.Property<string>("varDescription");
 
                     b.HasKey("varId");
-
-                    b.HasIndex("itemId");
 
                     b.ToTable("Variations");
                 });
@@ -290,10 +288,6 @@ namespace UniformShop.Migrations
 
             modelBuilder.Entity("UniformShop.Models.variation", b =>
                 {
-                    b.HasOne("UniformShop.Models.Item", "Item")
-                        .WithMany()
-                        .HasForeignKey("itemId");
-
                     b.HasOne("UniformShop.Models.Item")
                         .WithMany("variations")
                         .HasForeignKey("varId")

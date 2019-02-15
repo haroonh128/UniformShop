@@ -1,8 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace UniformShop.Models
 {
@@ -10,7 +6,6 @@ namespace UniformShop.Models
     {
         public UniformShopContext(DbContextOptions options)
         :base(options){
-            
         }
         public DbSet<Category> Categories { get; set; }
         public DbSet<color> Colors { get; set; }
@@ -23,5 +18,10 @@ namespace UniformShop.Models
         public DbSet<SubCategory> SubCategories { get; set; }
         public DbSet<Transaction> Transactions { get; set; }
         public DbSet<variation> Variations { get; set; }
+
+        //protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        //{
+
+        //}
     }
 }

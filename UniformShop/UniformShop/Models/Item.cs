@@ -22,6 +22,6 @@ namespace UniformShop.Models
         public virtual color Color { get; set; }
         public string description { get; set; }
         [ForeignKey("varId")]
-        public ICollection<variation>variations { get; set; }
+        public ICollection<variation> variations { get; set; }
     }
 }
