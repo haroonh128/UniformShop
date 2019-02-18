@@ -10,7 +10,6 @@ namespace UniformShop.Models
     public class Category
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int categoryId { get; set; }
         public string categoryName { get; set; }
     }

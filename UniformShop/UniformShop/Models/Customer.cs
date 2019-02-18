@@ -10,7 +10,6 @@ namespace UniformShop.Models
     public class Customer
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long custId { get; set; }
         public string custName { get; set; }
         public string userName { get; set; }

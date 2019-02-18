@@ -11,7 +11,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using UniformShop.DataManager;
 using UniformShop.Models;
+using UniformShop.Repository;
 
 namespace UniformShop
 {
@@ -28,6 +30,7 @@ namespace UniformShop
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<UniformShopContext>(opts => opts.UseSqlServer(Configuration["ConnectionString:UniformShopDB"]));
+            services.AddScoped<ICategoryRepository<Category>, CategoryManager>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 

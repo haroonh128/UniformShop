@@ -10,8 +10,9 @@ namespace UniformShop.Models
     public class Image
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long imgId { get; set; }
+        public string imgName { get; set; }
         public string imgUrl { get; set; }
+
     }
 }

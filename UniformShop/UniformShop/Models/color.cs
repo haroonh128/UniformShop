@@ -10,7 +10,6 @@ namespace UniformShop.Models
     public class color
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long colorId { get; set; }
         public string colorName { get; set; }
     }

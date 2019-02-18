@@ -10,7 +10,6 @@ namespace UniformShop.Models
     public class Transaction
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long tranId { get; set; }
         public string tranDate { get; set; }
         public int totalAmt { get; set; }

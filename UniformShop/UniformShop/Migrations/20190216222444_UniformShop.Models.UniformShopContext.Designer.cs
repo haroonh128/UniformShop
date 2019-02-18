@@ -10,8 +10,8 @@ using UniformShop.Models;
 namespace UniformShop.Migrations
 {
     [DbContext(typeof(UniformShopContext))]
-    [Migration("20190215052114_EFCoreCodeFirstSample.Models.UniContext")]
-    partial class EFCoreCodeFirstSampleModelsUniContext
+    [Migration("20190216222444_UniformShop.Models.UniformShopContext")]
+    partial class UniformShopModelsUniformShopContext
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -36,9 +36,7 @@ namespace UniformShop.Migrations
 
             modelBuilder.Entity("UniformShop.Models.color", b =>
                 {
-                    b.Property<long>("colorId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<long>("colorId");
 
                     b.Property<string>("colorName");
 
@@ -76,9 +74,9 @@ namespace UniformShop.Migrations
 
             modelBuilder.Entity("UniformShop.Models.Image", b =>
                 {
-                    b.Property<long>("imgId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<long>("imgId");
+
+                    b.Property<string>("imgName");
 
                     b.Property<string>("imgUrl");
 
@@ -99,6 +97,8 @@ namespace UniformShop.Migrations
 
                     b.Property<string>("description");
 
+                    b.Property<long?>("imgId");
+
                     b.Property<string>("itemName");
 
                     b.Property<long?>("sizeId");
@@ -106,6 +106,8 @@ namespace UniformShop.Migrations
                     b.HasKey("itemId");
 
                     b.HasIndex("colorId");
+
+                    b.HasIndex("imgId");
 
                     b.HasIndex("sizeId");
 
@@ -217,9 +219,9 @@ namespace UniformShop.Migrations
 
             modelBuilder.Entity("UniformShop.Models.variation", b =>
                 {
-                    b.Property<long>("varId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<long>("varId");
+
+                    b.Property<bool>("Deleted");
 
                     b.Property<string>("varDescription");
 
@@ -238,11 +240,6 @@ namespace UniformShop.Migrations
 
             modelBuilder.Entity("UniformShop.Models.Image", b =>
                 {
-                    b.HasOne("UniformShop.Models.Item")
-                        .WithMany("Images")
-                        .HasForeignKey("imgId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
                     b.HasOne("UniformShop.Models.variation")
                         .WithMany("Image")
                         .HasForeignKey("imgId")
@@ -254,6 +251,10 @@ namespace UniformShop.Migrations
                     b.HasOne("UniformShop.Models.color", "Color")
                         .WithMany()
                         .HasForeignKey("colorId");
+
+                    b.HasOne("UniformShop.Models.Image", "Image")
+                        .WithMany()
+                        .HasForeignKey("imgId");
 
                     b.HasOne("UniformShop.Models.size", "Size")
                         .WithMany()

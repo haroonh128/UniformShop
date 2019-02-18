@@ -10,7 +10,6 @@ namespace UniformShop.Models
     public class OrderDetail
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long ordDetailId { get; set; }
         public virtual Order Order { get; set; }
         public bool orderStatus { get; set; }

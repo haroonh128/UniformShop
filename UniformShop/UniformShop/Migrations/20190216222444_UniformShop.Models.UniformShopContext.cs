@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace UniformShop.Migrations
 {
-    public partial class EFCoreCodeFirstSampleModelsUniformShopContextSeed : Migration
+    public partial class UniformShopModelsUniformShopContext : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -21,28 +21,23 @@ namespace UniformShop.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Orders",
+                name: "Customers",
                 columns: table => new
                 {
-                    orderId = table.Column<long>(nullable: false)
+                    custId = table.Column<long>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    itemId = table.Column<long>(nullable: false),
-                    custId = table.Column<long>(nullable: true),
-                    date = table.Column<string>(nullable: true),
-                    createdBy = table.Column<string>(nullable: true),
-                    createdDate = table.Column<string>(nullable: true),
-                    modifiedBy = table.Column<string>(nullable: true),
-                    modifiedDate = table.Column<string>(nullable: true)
+                    custName = table.Column<string>(nullable: true),
+                    userName = table.Column<string>(nullable: true),
+                    password = table.Column<string>(nullable: true),
+                    address = table.Column<string>(nullable: true),
+                    phone = table.Column<string>(nullable: true),
+                    cardNumber = table.Column<long>(nullable: true),
+                    notifications = table.Column<bool>(nullable: true),
+                    email = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Orders", x => x.orderId);
-                    table.ForeignKey(
-                        name: "FK_Orders_Customers_custId",
-                        column: x => x.custId,
-                        principalTable: "Customers",
-                        principalColumn: "custId",
-                        onDelete: ReferentialAction.Restrict);
+                    table.PrimaryKey("PK_Customers", x => x.custId);
                 });
 
             migrationBuilder.CreateTable(
@@ -76,6 +71,31 @@ namespace UniformShop.Migrations
                         column: x => x.categoryId,
                         principalTable: "Categories",
                         principalColumn: "categoryId",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Orders",
+                columns: table => new
+                {
+                    orderId = table.Column<long>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    itemId = table.Column<long>(nullable: false),
+                    custId = table.Column<long>(nullable: true),
+                    date = table.Column<string>(nullable: true),
+                    createdBy = table.Column<string>(nullable: true),
+                    createdDate = table.Column<string>(nullable: true),
+                    modifiedBy = table.Column<string>(nullable: true),
+                    modifiedDate = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Orders", x => x.orderId);
+                    table.ForeignKey(
+                        name: "FK_Orders_Customers_custId",
+                        column: x => x.custId,
+                        principalTable: "Customers",
+                        principalColumn: "custId",
                         onDelete: ReferentialAction.Restrict);
                 });
 
@@ -131,6 +151,7 @@ namespace UniformShop.Migrations
                     itemId = table.Column<long>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     itemName = table.Column<string>(nullable: true),
+                    imgId = table.Column<long>(nullable: true),
                     categoryId = table.Column<long>(nullable: false),
                     sizeId = table.Column<long>(nullable: true),
                     colorId = table.Column<long>(nullable: true),
@@ -151,19 +172,13 @@ namespace UniformShop.Migrations
                 name: "Variations",
                 columns: table => new
                 {
-                    varId = table.Column<long>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    itemId = table.Column<long>(nullable: true)
+                    varId = table.Column<long>(nullable: false),
+                    varDescription = table.Column<string>(nullable: true),
+                    Deleted = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Variations", x => x.varId);
-                    table.ForeignKey(
-                        name: "FK_Variations_Items_itemId",
-                        column: x => x.itemId,
-                        principalTable: "Items",
-                        principalColumn: "itemId",
-                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Variations_Items_varId",
                         column: x => x.varId,
@@ -176,8 +191,7 @@ namespace UniformShop.Migrations
                 name: "Colors",
                 columns: table => new
                 {
-                    colorId = table.Column<long>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    colorId = table.Column<long>(nullable: false),
                     colorName = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -195,19 +209,13 @@ namespace UniformShop.Migrations
                 name: "Images",
                 columns: table => new
                 {
-                    imgId = table.Column<long>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    imgId = table.Column<long>(nullable: false),
+                    imgName = table.Column<string>(nullable: true),
                     imgUrl = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Images", x => x.imgId);
-                    table.ForeignKey(
-                        name: "FK_Images_Items_imgId",
-                        column: x => x.imgId,
-                        principalTable: "Items",
-                        principalColumn: "itemId",
-                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Images_Variations_imgId",
                         column: x => x.imgId,
@@ -220,6 +228,11 @@ namespace UniformShop.Migrations
                 name: "IX_Items_colorId",
                 table: "Items",
                 column: "colorId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Items_imgId",
+                table: "Items",
+                column: "imgId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Items_sizeId",
@@ -246,17 +259,20 @@ namespace UniformShop.Migrations
                 table: "Transactions",
                 column: "orderId");
 
-            migrationBuilder.CreateIndex(
-                name: "IX_Variations_itemId",
-                table: "Variations",
-                column: "itemId");
-
             migrationBuilder.AddForeignKey(
                 name: "FK_Items_Colors_colorId",
                 table: "Items",
                 column: "colorId",
                 principalTable: "Colors",
                 principalColumn: "colorId",
+                onDelete: ReferentialAction.Restrict);
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_Items_Images_imgId",
+                table: "Items",
+                column: "imgId",
+                principalTable: "Images",
+                principalColumn: "imgId",
                 onDelete: ReferentialAction.Restrict);
         }
 
@@ -266,8 +282,9 @@ namespace UniformShop.Migrations
                 name: "FK_Colors_Variations_colorId",
                 table: "Colors");
 
-            migrationBuilder.DropTable(
-                name: "Images");
+            migrationBuilder.DropForeignKey(
+                name: "FK_Images_Variations_imgId",
+                table: "Images");
 
             migrationBuilder.DropTable(
                 name: "orderDetails");
@@ -285,6 +302,9 @@ namespace UniformShop.Migrations
                 name: "Orders");
 
             migrationBuilder.DropTable(
+                name: "Customers");
+
+            migrationBuilder.DropTable(
                 name: "Variations");
 
             migrationBuilder.DropTable(
@@ -292,6 +312,9 @@ namespace UniformShop.Migrations
 
             migrationBuilder.DropTable(
                 name: "Colors");
+
+            migrationBuilder.DropTable(
+                name: "Images");
 
             migrationBuilder.DropTable(
                 name: "Sizes");

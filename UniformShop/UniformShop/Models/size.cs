@@ -10,7 +10,6 @@ namespace UniformShop.Models
     public class size
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long sizeId { get; set; }
         public string sizeName { get; set; }
         public string sizeDescription { get; set; }

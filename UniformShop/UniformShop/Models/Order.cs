@@ -10,7 +10,6 @@ namespace UniformShop.Models
     public class Order
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long orderId { get; set; }
         public long itemId { get; set; }
         [ForeignKey("custId")]

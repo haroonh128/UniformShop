@@ -10,13 +10,13 @@ namespace UniformShop.Models
     public class variation
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long varId { get; set; }
         public string varDescription { get; set; }
         [ForeignKey("colorId")]
-        public ICollection<color> Color { get; set; }
+        public virtual ICollection<color> Color { get; set; }
         [ForeignKey("imgId")]
-        public ICollection<Image> Image { get; set; }
+        public virtual ICollection<Image> Image { get; set; }
+        public bool Deleted { get; set; }
         //[ForeignKey("itemId")]
         //public virtual Item Item { get; set; }
     }

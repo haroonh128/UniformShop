@@ -10,11 +10,11 @@ namespace UniformShop.Models
     public class Item
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long itemId { get; set; }
         public string itemName { get; set; }
         [ForeignKey("imgId")]
-        public ICollection<Image>Images { get; set; }
+        public virtual Image Image { get; set; }
+        //public string imgName { get; set; }
         public long categoryId { get; set; }
         [ForeignKey("sizeId")]
         public virtual size Size { get; set; }
@@ -22,6 +22,6 @@ namespace UniformShop.Models
         public virtual color Color { get; set; }
         public string description { get; set; }
         [ForeignKey("varId")]
-        public ICollection<variation> variations { get; set; }
+        public virtual ICollection<variation> variations { get; set; }
     }
 }

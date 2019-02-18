@@ -10,7 +10,6 @@ namespace UniformShop.Models
     public class SubCategory
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int subCategoryId { get; set; }
         public string subCategoryName { get; set; }
         [ForeignKey("categoryId")]
